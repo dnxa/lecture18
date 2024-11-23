@@ -10,3 +10,15 @@ class Product(models.Model):
 
     def __str__(self):
         return "name: " + str(self.name) + " type: " + str(self.type) + " time:" + str(self.timestamp)
+
+class LoyalCustomer(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+
+    timestamp = models.DateField(auto_now=True)
+
+    products = models.ForeignKey("Product", on_delete=models.CASCADE)
+
+
+    def __str__(self):
+        return "name: " + str(self.first_name)
